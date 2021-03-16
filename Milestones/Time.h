@@ -1,3 +1,14 @@
+/*
+* Name: Mohammad Fuhad Uddin
+* Student ID: 135341196
+* Seneca Email: fmohammad15@myseneca.ca
+* Date: 16/03/2021
+* Final Project: Milestone 1
+-----------------------------------------------------------------
+* I have done all the coding by myself and only copied the code that
+* my professor provided to complete my workshops and assignments.
+*/
+
 #ifndef SDDS_TIMER_H
 #define SDDS_TIMER_H
 #include <iostream>

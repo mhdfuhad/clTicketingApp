@@ -1,3 +1,13 @@
+/*
+* Name: Mohammad Fuhad Uddin
+* Student ID: 135341196
+* Seneca Email: fmohammad15@myseneca.ca
+* Date: 16/03/2021
+* Final Project: Milestone 1
+-----------------------------------------------------------------
+* I have done all the coding by myself and only copied the code that
+* my professor provided to complete my workshops and assignments.
+*/
 
 #include <iostream>
 #include "Time.h"
@@ -18,10 +28,10 @@ namespace sdds {
 	{
 		int mins = m_min % 60;
 		int hr = (m_min - mins) / 60;
-		ostr.fill('0');
-		ostr.width(2);
+		ostr.fill('0'); //fills with 0 when single digit hour and minute
+		ostr.width(2); //makes sure it's two digits for HH
 		ostr << hr << ':';
-		ostr.width(2);
+		ostr.width(2); //makes sure it's two digits for MM
 		ostr << mins;
 
 		return ostr;
@@ -35,21 +45,21 @@ namespace sdds {
 		if (hr < 0) istr.setstate(ios::failbit);
 
 		istr.get(split);
-		if (split != ':') istr.setstate(ios::failbit);
+		if (split != ':') istr.setstate(ios::failbit); //check if ':' is entered between hh and mm
 
 		istr >> mins;
 		if (mins < 0) istr.setstate(ios::failbit);
 
-		this->m_min = (hr * 60) + mins;
+		this->m_min = (hr * 60) + mins; //sets current object to the time read
 		return istr;
 	}
 	Time& Time::operator-=(const Time& D)
 	{
-		if (D.m_min > this->m_min) {
-			unsigned int day = 1440;
-			this->m_min += day;
-			unsigned int remainder = D.m_min / day;
-			this->m_min += day * remainder;
+		if (D.m_min > this->m_min) { //if right side time is greater
+			unsigned int day = 1440; //1 day converted to minutes
+			this->m_min += day;	
+			unsigned int extra = D.m_min / day; //gets how many days greater than left side object time
+			this->m_min += day * extra; //adds those amount of days to left side object
 			this->m_min -= D.m_min;
 		}
 		else this->m_min -= D.m_min;
