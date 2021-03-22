@@ -1,13 +1,24 @@
-/*
-* Name: Mohammad Fuhad Uddin
-* Student ID: 135341196
-* Seneca Email: fmohammad15@myseneca.ca
-* Date: 16/03/2021
-* Final Project: Milestone 1
------------------------------------------------------------------
-* I have done all the coding by myself and only copied the code that
-* my professor provided to complete my workshops and assignments.
+/* Student Information
+Name: Mohammad Fuhad Uddin
+Student ID: 135341196
+Seneca Email: fmohammad15@myseneca.ca
+Date: 16/03/2021
 */
+
+/* Citation and Sources...
+Final Project Milestone 1
+Module: Utils
+Filename: Utils.cpp
+Version 1.0
+Author	Mohammad Fuhad Uddin
+Revision History
+-----------------------------------------------------------
+Date        Reason
+2020/03/22  getInt function logic updated to accept negative integers 
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code
+that my professor provided to complete my workshops and assignments.
+-----------------------------------------------------------*/
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
@@ -55,12 +66,12 @@ namespace sdds {
        }
        while (check) {
            getline(cin, num);
-
+           unsigned int i;
            bool flag = true;
            unsigned int size = strlen(num.c_str());
-
-           for (unsigned int i = 0; i < size && flag; i++) {
-               if (isdigit(num[0])) {   //check first character is an integer
+           bool negative = num[0] == '-'; //to differentiate between a signed numbers
+           for (i = negative ? 1 : 0; i < size && flag; i++) { 
+               if (isdigit(num[0]) || negative) {   //check first character is an integer or negative sign
                    if (!isdigit(num[i])) {    //checks the rest of the characters if not integer then prompt for re-entry
                        cout << "Enter only an integer, try again: ";
                        flag = false;    

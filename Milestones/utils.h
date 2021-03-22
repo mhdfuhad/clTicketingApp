@@ -1,13 +1,24 @@
-/*
-* Name: Mohammad Fuhad Uddin
-* Student ID: 135341196
-* Seneca Email: fmohammad15@myseneca.ca
-* Date: 16/03/2021
-* Final Project: Milestone 1
------------------------------------------------------------------
-* I have done all the coding by myself and only copied the code that
-* my professor provided to complete my workshops and assignments.
+/* Student Information
+Name: Mohammad Fuhad Uddin
+Student ID: 135341196
+Seneca Email: fmohammad15@myseneca.ca
+Date: 16/03/2021
 */
+
+/* Citation and Sources...
+Final Project Milestone 1
+Module: Utils
+Filename: Utils.h
+Version 1.0
+Author	Mohammad Fuhad Uddin
+Revision History
+-----------------------------------------------------------
+Date        Reason
+????/??/??
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code
+that my professor provided to complete my workshops and assignments.
+-----------------------------------------------------------*/
 
 #ifndef SDDS_UTILS_H_
 #define SDDS_UTILS_H_

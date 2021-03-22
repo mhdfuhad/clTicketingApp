@@ -1,16 +1,27 @@
-/*
-* Name: Mohammad Fuhad Uddin
-* Student ID: 135341196
-* Seneca Email: fmohammad15@myseneca.ca
-* Date: 16/03/2021
-* Final Project: Milestone 1
------------------------------------------------------------------
-* I have done all the coding by myself and only copied the code that
-* my professor provided to complete my workshops and assignments.
+/* Student Information
+Name: Mohammad Fuhad Uddin
+Student ID: 135341196
+Seneca Email: fmohammad15@myseneca.ca
+Date: 16/03/2021
 */
 
-#ifndef SDDS_TIMER_H
-#define SDDS_TIMER_H
+/* Citation and Sources...
+Final Project Milestone 1
+Module: Time
+Filename: Time.h
+Version 1.0
+Author	Mohammad Fuhad Uddin
+Revision History
+-----------------------------------------------------------
+Date        Reason
+????/??/??
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code
+that my professor provided to complete my workshops and assignments.
+-----------------------------------------------------------*/
+
+#ifndef SDDS_TIME_H
+#define SDDS_TIME_H
 #include <iostream>
 namespace sdds {
    class Time {
