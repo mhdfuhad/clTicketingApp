@@ -9,11 +9,12 @@ Date: 16/03/2021
 Final Project Milestone 1
 Module: Utils
 Filename: Utils.cpp
-Version 1.0
+Version 1.2
 Author	Mohammad Fuhad Uddin
 Revision History
 -----------------------------------------------------------
 Date        Reason
+2020/03/24  getInt function can handle only newline character input
 2020/03/22  getInt function logic updated to accept negative integers 
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code
@@ -69,9 +70,13 @@ namespace sdds {
            unsigned int i;
            bool flag = true;
            unsigned int size = strlen(num.c_str());
+           if (size == 0) {//if user just enters newline character
+               num[0] = 'X';
+               size = strlen(num.c_str());
+           }
            bool negative = num[0] == '-'; //to differentiate between a signed numbers
            for (i = negative ? 1 : 0; i < size && flag; i++) { 
-               if (isdigit(num[0]) || negative) {   //check first character is an integer or negative sign
+               if ((isdigit(num[0]) || negative)) {   //check first character is an integer or negative sign
                    if (!isdigit(num[i])) {    //checks the rest of the characters if not integer then prompt for re-entry
                        cout << "Enter only an integer, try again: ";
                        flag = false;    

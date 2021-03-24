@@ -141,13 +141,17 @@
   <ItemGroup>
     <ClCompile Include="IOAble.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="ms2Tester.cpp" />
+    <ClCompile Include="ms3Tester.cpp" />
+    <ClCompile Include="Patient.cpp" />
+    <ClCompile Include="Ticket.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IOAble.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Patient.h" />
+    <ClInclude Include="Ticket.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
