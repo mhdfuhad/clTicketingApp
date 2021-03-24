@@ -1,6 +1,6 @@
 // ms1 Tester:
-// Version: 1.0
-// Date: 20201-03-03
+// Version: 1.1
+// Date: 20201-03-17 , fixed compiler version dependency.
 // Author: Fardad Soleimanloo
 // Description:
 // This file tests the utils and Time Module of your project
@@ -42,7 +42,9 @@ void getIntTester() {
    cout << "21 <ENTER> (there is a space after 21)" << endl;
    cout << "20<ENTER>" << endl;
    getInt(10, 20, "> ", "Value must be between 10 and 20: ", false);
-   cout << "last value entered: " << getInt(10, 20, "> ", "Invalid value, retry ") << endl;
+   // fixed compiler version dependency :
+   int val = getInt(10, 20, "> ", "Invalid value, retry ");
+   cout << "last value entered: " << val << endl;
 }
 void timeTester() {
    Time D(1385u), C(65u), E;
