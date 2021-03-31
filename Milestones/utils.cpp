@@ -9,11 +9,12 @@ Date: 16/03/2021
 Final Project Milestone 1
 Module: Utils
 Filename: Utils.cpp
-Version 1.2
+Version 1.3
 Author	Mohammad Fuhad Uddin
 Revision History
 -----------------------------------------------------------
 Date        Reason
+2020/03/30  getInt function exception handling added for use of stoi()
 2020/03/24  getInt function can handle only newline character input
 2020/03/22  getInt function logic updated to accept negative integers 
 -----------------------------------------------------------
@@ -27,6 +28,7 @@ that my professor provided to complete my workshops and assignments.
 #include <ctime>
 #include <string>
 #include <cstring>
+#include <stdexcept>   
 #include "utils.h"
 #include "Time.h"
 using namespace std;
@@ -90,7 +92,13 @@ namespace sdds {
 
            if (flag) {  
                check = false; //to exit while loop
-               m_num = stoi(num); //will convert the input from string to integer
+               try {
+                   m_num = stoi(num); //will convert the input from string to integer
+               }
+               catch (out_of_range& e) {
+                   cout << "The value is out of range, click ENTER and try again.";
+                   check = true;
+               }
            }
        }
        return m_num;

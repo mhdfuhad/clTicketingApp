@@ -6,7 +6,7 @@ Date: 24/03/2021
 */
 
 /* Citation and Sources...
-Final Project Milestone 1
+Final Project Milestone 3
 Module: Patient
 Filename: Patient.cpp
 Version 1.0
@@ -124,7 +124,7 @@ namespace sdds {
         strcpy(m_name, read.c_str());
 
         //get ohip
-        m_ohip = getInt(100000000, 999999999, "OHIP:", "Invalid OHIP Number, "); //use of overloaded getInt functin to get ohip number of 9 digits
+        m_ohip = getInt(100000000, 999999999, "OHIP: ", "Invalid OHIP Number, "); //use of overloaded getInt functin to get ohip number of 9 digits
 
         return istr;
     }

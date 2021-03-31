@@ -139,20 +139,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CovidPatient.cpp" />
     <ClCompile Include="IOAble.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="ms3Tester.cpp" />
+    <ClCompile Include="ms4Tester_prof.cpp" />
     <ClCompile Include="Patient.cpp" />
     <ClCompile Include="Ticket.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="TriagePatient.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CovidPatient.h" />
     <ClInclude Include="IOAble.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Patient.h" />
     <ClInclude Include="Ticket.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="TriagePatient.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
