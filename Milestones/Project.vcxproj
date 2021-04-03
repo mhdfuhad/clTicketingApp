@@ -142,8 +142,8 @@
     <ClCompile Include="CovidPatient.cpp" />
     <ClCompile Include="IOAble.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="ms4Tester_prof.cpp" />
     <ClCompile Include="Patient.cpp" />
+    <ClCompile Include="PreTriage.cpp" />
     <ClCompile Include="Ticket.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TriagePatient.cpp" />
@@ -154,6 +154,7 @@
     <ClInclude Include="IOAble.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Patient.h" />
+    <ClInclude Include="PreTriage.h" />
     <ClInclude Include="Ticket.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="TriagePatient.h" />
