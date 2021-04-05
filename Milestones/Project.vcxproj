@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CovidPatient.cpp" />
+    <ClCompile Include="fpTester.cpp" />
     <ClCompile Include="IOAble.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Patient.cpp" />

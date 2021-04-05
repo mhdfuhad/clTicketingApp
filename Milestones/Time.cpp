@@ -60,7 +60,9 @@ namespace sdds {
 
 		istr >> mins;
 		if (mins < 0) istr.setstate(ios::failbit);
-		if(mins != 0) this->m_min = (hr * 60) + mins; //sets current object to the time read
+
+		if(mins > 0 || hr > 0) this->m_min = (hr * 60) + mins; //sets current object to the time read
+
 		return istr;
 	}
 	Time& Time::operator-=(const Time& D)
