@@ -1,6 +1,26 @@
+/* Student Information
+Name: Mohammad Fuhad Uddin
+Student ID: 135341196
+Seneca Email: fmohammad15@myseneca.ca
+Date: 08/04/2021
+*/
+
+/* Citation and Sources...
+Final Project Milestone 5
+Module: PreTriage
+Filename: PreTriage.cpp
+Version 1.0
+Author	Mohammad Fuhad Uddin
+Revision History
+-----------------------------------------------------------
+Date        Reason
+????/??/??
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code
+that my professor provided to complete my workshops and assignments.
+-----------------------------------------------------------*/
 
 #define _CRT_SECURE_NO_WARNINGS
-#include <string>
 #include <cstring>
 #include <iostream>
 #include <fstream>
@@ -19,16 +39,16 @@ namespace sdds {
 		if (m_lineupSize == maxNoOfPatients) {
 			cout << "Line up full!" << endl;
 		}
-		else {
+		else { 
 			int selection = -1;
-			m_pMenu >> selection;
+			m_pMenu >> selection; //menu is shown only once when function called
 			if (selection == 1) {
 				m_lineup[m_lineupSize] = new CovidPatient;
 			}
 			else if (selection == 2) {
 				m_lineup[m_lineupSize] = new TriagePatient;
 			}
-			else if (selection == 0) return;
+			else if (selection == 0) return; //leave function with no value
 			
 			if (selection == 1 || selection == 2) {
 				m_lineup[m_lineupSize]->setArrivalTime();
@@ -48,19 +68,19 @@ namespace sdds {
 	{
 		int selection = -1;
 		char type = '\0';
-		m_pMenu >> selection;
+		m_pMenu >> selection; //menu is shown only once when function called
 		if (selection == 1) {
 			type = 'C';
 		}
 		else if (selection == 2) {
 			type = 'T';
 		}
-		else if (selection == 0) return;
+		else if (selection == 0) return; //leave function with no value
 
 		if (selection == 1 || selection == 2) {
 			int index = -1;
 			index = indexOfFirstInLine(type);
-			if (index != -1) {
+			if (index > -1) {
 				cout << "\n******************************************" << endl;
 				m_lineup[index]->fileIO(false);
 				cout << "Calling for ";
@@ -68,12 +88,9 @@ namespace sdds {
 				cout << "******************************************\n" << endl;
 				setAverageWaitTime(*m_lineup[index]);
 				removePatientFromLineup(index);
-
 			}
-			else return;
-
+			else return; //when not valid index it will leave function
 		}
-
 	}
 
 	const Time PreTriage::getWaitTime(const Patient& p) const
@@ -93,7 +110,6 @@ namespace sdds {
 			return m_averCovidWait * count;
 		}
 		else return 0;
-
 	}
 
 	void PreTriage::setAverageWaitTime(const Patient& p)
@@ -101,7 +117,7 @@ namespace sdds {
 		Time CT;
 		CT.setToNow();
 
-		Time A = CT - (Time)p; //Currennt time minus Patient ticket time
+		Time A = CT - (Time)p; //Current time minus Patient ticket time
 		unsigned int PTN = p.number(); //Patient Ticket Number
 
 		if (p == 'T') {
@@ -110,12 +126,11 @@ namespace sdds {
 		else if (p == 'C') {
 			 m_averCovidWait = (A + (m_averCovidWait * (PTN - 1))) / PTN;
 		}
-		
 	}
 
 	void PreTriage::removePatientFromLineup(int index)
 	{
-		removeDynamicElement(m_lineup, index, m_lineupSize);
+		removeDynamicElement<Patient>(m_lineup, index, m_lineupSize); //use templated function to remove the patient from the lineup
 	}
 
 	int PreTriage::indexOfFirstInLine(char type) const
@@ -132,24 +147,25 @@ namespace sdds {
 	{
 		cout << "Loading data..." << endl;
 
+		//read from file
 		ifstream fin;
 		fin.open(m_dataFilename);
 		if (fin.is_open()) {
 			fin >> m_averCovidWait;
-			fin.ignore();
+			fin.ignore(); //ignores the comma
 			fin >> m_averTriageWait;
-			fin.ignore();
+			fin.ignore(); //ignores the nextline
 			Patient* temp = nullptr;
 			int i;
-			for (i = 0; i < maxNoOfPatients && fin; i++) {
+			for (i = 0; fin && i < maxNoOfPatients; i++) {
 				char typeRead;
 				fin.get(typeRead);
-				fin.ignore();
+				fin.ignore(); //ignores the comma
 				if (typeRead == 'T') {
-					temp = new TriagePatient;
+					temp = new TriagePatient; //instantiate new triage patient
 				}
 				else if (typeRead == 'C') {
-					temp = new CovidPatient;
+					temp = new CovidPatient; //instantiate new covid patient
 				}
 
 				if (temp) {
@@ -159,11 +175,10 @@ namespace sdds {
 					m_lineup[i] = temp;
 					m_lineupSize++;
 				}
-
 			}
-
-			if (fin && i > 0) {
-				cout << "Warning: number of records exceeded " << maxNoOfPatients << '\n' << endl;
+			if (fin && i > 0) { //if there is more to read from the file after max patients then it will show it exceeded max patients
+				cout << "Warning: number of records exceeded " << maxNoOfPatients << endl;
+				cout << i << " Records imported...\n" << endl;
 			}
 
 			if (!fin) {
@@ -173,20 +188,23 @@ namespace sdds {
 				else {
 					cout << i - 1 << " Records imported...\n" << endl;
 					m_lineupSize--;
+					delete temp;
 				}
 			}
+			
 		}
 	}
 
-	PreTriage::PreTriage(const char* dataFilename): m_appMenu("General Hospital Pre-Triage Application\n1- Register\n2- Admit",2),m_pMenu("Select Type of Admittance:\n1- Covid Test\n2- Triage",2),m_averCovidWait(15),m_averTriageWait(5)
+	PreTriage::PreTriage(const char* dataFilename): m_averCovidWait(15), m_averTriageWait(5),m_appMenu("General Hospital Pre-Triage Application\n1- Register\n2- Admit",2),m_pMenu("Select Type of Admittance:\n1- Covid Test\n2- Triage",2)
 	{
-		m_dataFilename = new char[sizeof(dataFilename)]; 
+		m_dataFilename = new char[strlen(dataFilename) + 1]; 
 		strcpy(m_dataFilename, dataFilename);
 		load();
 	}
 
 	PreTriage::~PreTriage()
 	{
+		//write to file
 		ofstream fout; 
 		fout.open(m_dataFilename);
 		if (fout.is_open()) {
@@ -198,26 +216,32 @@ namespace sdds {
 		}
 		fout.close();
 
+		//write to console
 		cout << "Saving Average Wait Times," << endl; 
-		cout << "\tCOVID Test: " << m_averCovidWait << endl; 
-		cout << "\tTriage: " << m_averTriageWait << endl; 
-
+		cout << "   COVID Test: " << m_averCovidWait << endl; 
+		cout << "   Triage: " << m_averTriageWait << endl; 
+		cout << "Saving m_lineup..." << endl;
 		for (int i = 0; i < m_lineupSize; i++) { 
 			cout << i + 1 << "- "; 
 			m_lineup[i]->csvWrite(cout); 
 			cout << endl;
-		} 
+		}
+		cout << "done!" << endl;
 
-		for (int i = 0; i < maxNoOfPatients; delete[] m_lineup[i++], m_lineup[i] = nullptr);
+		//deallocation
+		for (int i = 0; i < m_lineupSize; i++) {
+			delete m_lineup[i];
+			m_lineup[i] = nullptr;
+		}
 		delete[] m_dataFilename; 
 		m_dataFilename = nullptr; 
-		cout << "done!";
+
 	}
 
 	void PreTriage::run(void)
 	{
 		int quit = -1;
-		while (quit != 0) {
+		while (quit != 0) {//menu stays until it asks to quit
 			m_appMenu >> quit;
 			if (quit == 1) {
 				reg();
